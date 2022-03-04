@@ -38,6 +38,15 @@ func prometheusMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+func Hello(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello World")
+}
+
+func Greet(w http.ResponseWriter, r *http.Request) {
+	name := mux.Vars(r)["name"]
+	fmt.Fprintf(w, "Hello %s\n", name)
+}
+
 func init() {
 	prometheus.Register(totalRequests)
 }
@@ -48,9 +57,11 @@ func main() {
 
 	// Prometheus endpoint
 	router.Path("/prometheus").Handler(promhttp.Handler())
+	router.Path("/").HandlerFunc(Hello)
+	router.Path("/greet/{name}").HandlerFunc(Greet)
 
 	// Serving static files
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+	// router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 
 	fmt.Println("Serving requests on port 9000")
 	err := http.ListenAndServe(":9000", router)
