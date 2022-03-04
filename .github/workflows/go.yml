@@ -10,9 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install GoLang
-        run: "sudo echo /usr/local/go/bin >> $GITHUB_PATH; sudo rm -rf /usr/local/go && sudo mkdir -p /usr/local/go && sudo curl -s -L https://golang.org/dl/go1.17.linux-armv6l.tar.gz | sudo tar -C /usr/local -xz"
-
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -25,7 +22,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            source ~/.profile
             cd ~/go/src/github.com/edwinnduti/promethical
             git pull origin master
             go mod vendor
