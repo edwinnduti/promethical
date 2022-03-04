@@ -22,5 +22,4 @@ jobs:
 
       - name: Run Build
         run: |
-          go build main.go
-          ./main
+          go run main.go
