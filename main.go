@@ -44,7 +44,7 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 
 func Greet(w http.ResponseWriter, r *http.Request) {
 	name := mux.Vars(r)["name"]
-	fmt.Fprintf(w, "Hello %s\n", name)
+	fmt.Fprintf(w, "Hello %s, You are Gay!\n", name)
 }
 
 func init() {
