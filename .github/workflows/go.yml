@@ -23,6 +23,7 @@ jobs:
       - name: Run Build
         run: |
           go build .
+          promethical
 
       - name: End Process
         run: echo "Started"
