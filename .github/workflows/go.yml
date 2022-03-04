@@ -16,7 +16,7 @@ jobs:
           go-version: 1.17.7
 
       - name: SSH and Deploy Go App
-      - uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
