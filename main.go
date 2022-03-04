@@ -39,7 +39,7 @@ func prometheusMiddleware(next http.Handler) http.Handler {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World")
+	fmt.Fprintf(w, "Hello World: Earth. what is up?")
 }
 
 func Greet(w http.ResponseWriter, r *http.Request) {
