@@ -22,8 +22,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            source ~/.profile
             cd ~/go/src/github.com/edwinnduti/promethical
             git pull origin master
-            source ~/.profile
             go mod vendor
             go build main.go
