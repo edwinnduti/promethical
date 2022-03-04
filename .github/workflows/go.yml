@@ -16,6 +16,7 @@ jobs:
           go-version: 1.16
 
       - name: Install Dependencies & build
+        run: go version
         with:
           script: |
             cd go/src/github.com/edwinnduti
