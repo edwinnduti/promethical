@@ -22,7 +22,7 @@ jobs:
 
       - name: Run Build
         run: |
-          go run main.go
+          go build .
 
       - name: End Process
         run: echo "Started"
