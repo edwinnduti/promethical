@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install GoLang
+        run: "echo /usr/local/go/bin >> $GITHUB_PATH; rm -rf /usr/local/go && mkdir -p /usr/local/go && curl -s -L https://golang.org/dl/go1.17.linux-armv6l.tar.gz | tar -C /usr/local -xz"
+
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
