@@ -13,17 +13,16 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.17.7
 
-      - name: Install Dependencies
-        run: |
-          git pull origin master
-          go mod vendor
-
-      - name: Run Build
-        run: |
-          go build .
-          ./promethical &
-
-      - name: End Process
-        run: echo "Started"
+      - name: SSH and Deploy Go App
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/go/src/github.com/edwinnduti/promethical
+            git pull origin master
+            go mod vendor
+            go build main.go
